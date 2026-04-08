@@ -103,9 +103,11 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 120px 5% 80px;
             position: relative;
             overflow: hidden;
+            gap: 4rem;
         }
 
         .hero::before {
@@ -121,7 +123,182 @@
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 600px;
+            flex-shrink: 0;
+        }
+
+        .hero-illustration {
+            flex: 1;
+            max-width: 550px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 480px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 5%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 40%;
+            left: 0;
+            animation-delay: -2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-icon.savings {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+
+        .card-icon.quality {
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+        }
+
+        .card-icon.trust {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
+
+        .card-content h4 {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-content p {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .card-content p.green {
+            color: #10b981;
+        }
+
+        .hero-main-visual {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+        }
+
+        .shopping-circle {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.3);
+        }
+
+        .shopping-circle::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border: 2px dashed rgba(233, 69, 96, 0.3);
+            border-radius: 50%;
+            animation: spin 30s linear infinite;
+        }
+
+        .shopping-circle svg {
+            width: 120px;
+            height: 120px;
+            color: white;
+        }
+
+        .orbit-item {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .orbit-item:nth-child(2) {
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: -1s;
+        }
+
+        .orbit-item:nth-child(3) {
+            bottom: 20px;
+            left: -20px;
+            animation-delay: -2s;
+        }
+
+        .orbit-item:nth-child(4) {
+            bottom: 20px;
+            right: -20px;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .hero-badge {
@@ -557,6 +734,67 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-illustration {
+                max-width: 400px;
+                width: 100%;
+            }
+
+            .hero-main-visual {
+                width: 220px;
+                height: 220px;
+            }
+
+            .shopping-circle svg {
+                width: 90px;
+                height: 90px;
+            }
+
+            .floating-card {
+                padding: 1rem;
+                font-size: 0.875rem;
+            }
+
+            .floating-card:nth-child(1) {
+                top: 0;
+                right: 0;
+            }
+
+            .floating-card:nth-child(2) {
+                top: 35%;
+                left: -10px;
+            }
+
+            .floating-card:nth-child(3) {
+                bottom: 5%;
+                right: 0;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-stats {
                 gap: 2rem;
@@ -579,6 +817,51 @@
             .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .hero-illustration {
+                max-width: 320px;
+            }
+
+            .floating-card {
+                padding: 0.75rem 1rem;
+                gap: 0.75rem;
+            }
+
+            .card-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            .card-content h4 {
+                font-size: 0.75rem;
+            }
+
+            .card-content p {
+                font-size: 1rem;
+            }
+
+            .hero-main-visual {
+                width: 180px;
+                height: 180px;
+            }
+
+            .shopping-circle svg {
+                width: 70px;
+                height: 70px;
+            }
+
+            .orbit-item {
+                width: 45px;
+                height: 45px;
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-card:nth-child(2) {
+                display: none;
             }
         }
 
@@ -636,6 +919,63 @@
                 <div class="stat">
                     <div class="stat-number">0</div>
                     <div class="stat-label">Hidden Costs</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-illustration">
+            <div class="hero-visual">
+                <!-- Floating info cards -->
+                <div class="floating-card">
+                    <div class="card-icon savings">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h4>You Save</h4>
+                        <p class="green">₹2,450</p>
+                    </div>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon quality">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h4>Quality</h4>
+                        <p>Verified</p>
+                    </div>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-icon trust">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h4>100% Genuine</h4>
+                        <p>Guaranteed</p>
+                    </div>
+                </div>
+                
+                <!-- Central visual -->
+                <div class="hero-main-visual">
+                    <div class="shopping-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        <!-- Orbiting items -->
+                        <div class="orbit-item">🏠</div>
+                        <div class="orbit-item">📱</div>
+                        <div class="orbit-item">👕</div>
+                    </div>
                 </div>
             </div>
         </div>
